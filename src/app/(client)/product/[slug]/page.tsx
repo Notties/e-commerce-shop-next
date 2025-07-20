@@ -4,6 +4,7 @@ import FavoriteButton from "@/components/FavoriteButton";
 import ImageView from "@/components/ImageView";
 import PriceView from "@/components/PriceView";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
+import { Product, PRODUCT_BY_SLUG_QUERYResult } from "@/sanity.types";
 import { getProductBySlug } from "@/sanity/queries";
 import { CornerDownLeft, StarIcon, Truck } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -19,7 +20,7 @@ const SingleProductPage = async ({
   params: Promise<{ slug: string }>;
 }) => {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  const product: PRODUCT_BY_SLUG_QUERYResult = await getProductBySlug(slug);
   if (!product) {
     return notFound();
   }
@@ -59,10 +60,10 @@ const SingleProductPage = async ({
           </p>
         </div>
         <div className="flex items-center gap-2.5 lg:gap-3">
-          <AddToCartButton product={product} />
-          <FavoriteButton showProduct={true} product={product} />
+          <AddToCartButton product={product as Product} />
+          <FavoriteButton showProduct={true} product={product as Product} />
         </div>
-        <ProductCharacteristics product={product} />
+        <ProductCharacteristics product={product as Product} />
         <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <RxBorderSplit className="text-lg" />

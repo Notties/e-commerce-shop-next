@@ -1,4 +1,4 @@
-import { SINGLE_BLOG_QUERYResult } from "@/sanity.types";
+import { PRODUCT_BY_SLUG_QUERYResult, SINGLE_BLOG_QUERYResult } from "@/sanity.types";
 import { sanityFetch } from "../lib/live";
 import {
   BLOG_CATEGORIES,
@@ -63,7 +63,7 @@ const getDealProducts = async () => {
     return [];
   }
 };
-const getProductBySlug = async (slug: string) => {
+const getProductBySlug = async (slug: string): Promise<PRODUCT_BY_SLUG_QUERYResult | null> => {
   try {
     const product = await sanityFetch({
       query: PRODUCT_BY_SLUG_QUERY,

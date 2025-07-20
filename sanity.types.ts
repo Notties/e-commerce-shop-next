@@ -212,7 +212,7 @@ export type Product = {
     _key: string;
   }>;
   description?: string;
-  price?: number;
+  price: number;
   discount?: number;
   categories?: Array<{
     _ref: string;
