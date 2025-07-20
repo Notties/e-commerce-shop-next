@@ -8,7 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-poppins antialiased`}>
+      <body className={`font-poppins antialiased`} suppressHydrationWarning>
         {children}
         <Toaster
           position="bottom-right"
